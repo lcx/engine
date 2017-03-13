@@ -7,7 +7,7 @@ xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
   end
 
   @pages.each do |page|
-    if not page.index_or_not_found?
+    if (not page.index_or_not_found?) && (not page.redirect?)
       if page.templatized?
         page.fetch_target_entries(_visible: true).each do |c|
           if c._slug.present?
